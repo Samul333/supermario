@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start":"serve  ./public -p 80",
+    "dev": "serve  ./public -p 80",
+    "start":"node index.js",
     "help": "serve --help",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -12,6 +13,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "express": "^4.17.1",
     "serve": "^13.0.2"
   }
 }
