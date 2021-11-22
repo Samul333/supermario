@@ -4,13 +4,17 @@ export function setUpKeyboard(entity){
 
     const SPACE = 32;   
     const input = new KeyboardState();
-    input.addMapping('ArrowUp',keyState=>{
-        if(keyState){
-            entity.jump.start();
-        }else{
-            entity.jump.cancel();
-        }
+
+    ['Space','ArrowUp'].forEach(key=>{
+        input.addMapping(key,keyState=>{
+            if(keyState){
+                entity.jump.start();
+            }else{
+                entity.jump.cancel();
+            }
+        })
     })
+  
 
 
     input.addMapping('ArrowRight',keyState=>{
