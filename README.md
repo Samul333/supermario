@@ -17,6 +17,7 @@ This is a recreation of the super mario game in vanilla javascript
 
 ## Currently working on:
 * Side scrolling the overworld
+* Animations
 
 
 # Run on local
