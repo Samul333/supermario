@@ -23,7 +23,6 @@ export default class TileCollider {
 
         if(match.tile.name !== 'ground') return;
 
-        debugger;
         if(entity.vel.y >0){
             if(entity.pos.y > match.y1){
                 entity.pos.y = match.y1;
@@ -31,6 +30,14 @@ export default class TileCollider {
                 entity.vel.y = 0;
             }
         }
+        else if(entity.vel.y < 0){
+            if(entity.pos.y < match.y2){
+                entity.pos.y = match.y2;
+
+                entity.vel.y = 0;
+            }
+        }
+
 
     }
 }

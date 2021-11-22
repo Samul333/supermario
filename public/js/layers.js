@@ -1,3 +1,5 @@
+import { Matrix } from "./math.js";
+
 export function craeteBackgroundLayer (level,sprites){
     const buffer = document.createElement('canvas');
     buffer.width= 256;
@@ -18,6 +20,9 @@ export function craeteBackgroundLayer (level,sprites){
 }
 
 
+
+
+
 export function createSpriteLayer(entities){
 
     return function createSpriteLayer(context){
@@ -28,3 +33,30 @@ export function createSpriteLayer(entities){
     }
 }
 
+export function createCollisionLayer(level) {
+
+  
+
+    const tileResolver = level.TileCollider.tiles;
+    const tileSize = tileResolver.tileSize;
+
+    const resolvedTiles = new Matrix();
+
+    const getByIndexOriginal = tileResolver.getByIndex;
+
+    tileResolver.getByIndex = function getByIndexFake(x, y) {
+        resolvedTiles.set(x, y, true);
+        return getByIndexOriginal.call(tileResolver, x, y);
+    }
+
+    return function drawCollisions(context) {
+        context.strokeStyle = 'blue';
+        debugger;
+        resolvedTiles.forEach((value, x, y) => {
+            context.beginPath();
+            context.rect(x * tileSize, y * tileSize, tileSize, tileSize);
+            context.stroke();
+        });
+        resolvedTiles.clear();
+    };
+}

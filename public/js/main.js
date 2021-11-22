@@ -1,6 +1,7 @@
 import Compositor from "./compositer.js";
 import { createMario } from "./entities.js";
 import KeyboardState from "./ketboard.js";
+import { createCollisionLayer } from "./layers.js";
 
 
 import { loadLevel} from "./loader.js";
@@ -36,7 +37,10 @@ Promise.all([
     const SPACE = 32;   
     const input = new KeyboardState();
 
+
+
     level.entities.add(mario);
+    level.comp.layers.push(createCollisionLayer(level));
 
     input.addMapping(SPACE,keyState=>{
         if(keyState){
@@ -66,7 +70,7 @@ Promise.all([
   // mario.vel.set(200,-600)
 
 
-  
+    
 
     const timer = new Timer(1/60)
 

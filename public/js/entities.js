@@ -14,9 +14,9 @@ export function createMario(){
     .then(sprite=>{
         const mario = new Entity();
  
-
+        mario.addTrait(new Jump());
        mario.addTrait(new Velocity());
-       mario.addTrait(new Jump());
+
      
     
         mario.draw = function drawMario(context){
