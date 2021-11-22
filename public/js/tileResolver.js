@@ -17,7 +17,11 @@ export default class TileResolver{
         if(tile){
             const y1 = indexY * this.tileSize
             const y2 = y1+ this.tileSize;
+            const x1 = indexX * this.tileSize
+            const x2 = x1+ this.tileSize;
             return {
+                x1,
+                x2,
                 y1,
                 y2,
                 tile,
@@ -27,15 +31,17 @@ export default class TileResolver{
 
     toIndexRange(pos1,pos2){
 
-        const pMax = Math.ceil(pos2/this.tileSize) * this.tileSize;
+        const pMax = Math.ceil(pos2 / this.tileSize) * this.tileSize;
         const range = [];
 
         let pos = pos1;
 
         do {
             range.push(this.toIndex(pos));
-            pos = this.tileSize;
+            pos += this.tileSize;
         } while(pos < pMax)
+
+        return range
 
     }
 
@@ -65,3 +71,6 @@ export default class TileResolver{
     }
 
 }
+
+
+window.Tile = TileResolver

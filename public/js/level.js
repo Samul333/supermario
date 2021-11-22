@@ -7,6 +7,10 @@ export default class Level {
 
     constructor(){
 
+        const gravity = 2000;
+   
+
+        this.gravity = 2000;
         this.comp = new Compositor();
 
         this.entities = new Set();
@@ -19,7 +23,16 @@ export default class Level {
         this.entities.forEach(entity=>{
             entity.update(deltaTime);
 
+            entity.pos.x+=entity.vel.x * deltaTime;
+
+            this.TileCollider.checkX(entity)
+
+            entity.pos.y+=entity.vel.y * deltaTime;
+
+            this.TileCollider.checkY(entity)
+
             this.TileCollider.test(entity)
+            entity.vel.y+=this.gravity * deltaTime;
         })
 
     }
