@@ -1,12 +1,24 @@
 This is a recreation of the super mario game in vanilla javascript 
 
 
-Implemented Features
+# Implemented Features:-
 
--Dynamically load level from a json file.
--Dynamically load sprites.
--Collision detection.
--Simple mario physics
+* Dynamically load level from a json file.
+* Dynamically load sprites.
+* Collision detection.
+* Simple mario physics
+
+
+# keyboard bindins for mario:
+
+* Space to jump
+* Right arrow and left arrow,
+
+
+# Run on local
+
+* Clone the repo in your local directory.
+* Run npm run dev. The application should be available on http://localhost:80 
 
 Available on :
 
