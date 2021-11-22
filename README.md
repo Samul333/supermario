@@ -15,9 +15,14 @@ This is a recreation of the super mario game in vanilla javascript
 * Right arrow and left arrow,
 
 
+## Currently working on:
+* Side scrolling the overworld
+
+
 # Run on local
 
 * Clone the repo in your local directory.
+* Run npm install to intall all the dependancies
 * Run npm run dev. The application should be available on http://localhost:80 
 
 Available on :
