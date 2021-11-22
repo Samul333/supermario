@@ -4,7 +4,7 @@ export function setUpKeyboard(entity){
 
     const SPACE = 32;   
     const input = new KeyboardState();
-    input.addMapping('Space',keyState=>{
+    input.addMapping('ArrowUp',keyState=>{
         if(keyState){
             entity.jump.start();
         }else{
