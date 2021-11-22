@@ -1,5 +1,5 @@
-import Compositor from "./compositer.js";
 import { createMario } from "./entities.js";
+import { setUpKeyboard } from "./input.js";
 import KeyboardState from "./ketboard.js";
 import { createCollisionLayer } from "./layers.js";
 
@@ -30,25 +30,10 @@ Promise.all([
 ])
 .then(([mario,level])=>{
 
-
-  
-
-    const gravity = 2000;
-    const SPACE = 32;   
-    const input = new KeyboardState();
-
-
-
-    level.entities.add(mario);
+     level.entities.add(mario);
     level.comp.layers.push(createCollisionLayer(level));
 
-    input.addMapping(SPACE,keyState=>{
-        if(keyState){
-            mario.jump.start();
-        }else{
-            mario.jump.cancel();
-        }
-    })
+    const input = setUpKeyboard(mario);
 
     input.listenTo(window);
 
@@ -69,16 +54,13 @@ Promise.all([
     mario.pos.set(64,180)
   // mario.vel.set(200,-600)
 
-
-    
-
-    const timer = new Timer(1/60)
+      const timer = new Timer(1/60)
 
     timer.update  = function update(deltaTime){
          
             level.update(deltaTime);
             level.comp.draw(context)
-            mario.vel.y+=gravity * deltaTime;
+          
     }
 
    timer.start();
