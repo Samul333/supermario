@@ -7,6 +7,8 @@ This is a recreation of the super mario game in vanilla javascript
 * Dynamically load sprites.
 * Collision detection.
 * Simple mario physics
+* Manual Side Scrolling
+* Basic Mario Animations
 
 
 # keyboard bindins for mario:
@@ -16,8 +18,9 @@ This is a recreation of the super mario game in vanilla javascript
 
 
 ## Currently working on:
-* Side scrolling the overworld
-* Animations
+* Manual Side scrolling the overworld [DONE]
+* Mario Animations [DONE]
+* Tile Animations
 
 
 # Run on local
