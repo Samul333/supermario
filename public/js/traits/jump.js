@@ -4,17 +4,15 @@ export class Jump extends Trait {
 
     constructor(){
         super('jump')
-
-        this.duration = 0.5;
+        this.duration = 0.4;
         this.velocity = 200;
-
         this.engagedTime = 0;
     }
 
 
     start(){
         this.engagedTime = this.duration;
-
+        this.Jumping = true;
     }
 
     cancel(){
@@ -27,7 +25,10 @@ export class Jump extends Trait {
             entity.vel.y = -this.velocity;
             this.engagedTime -= deltaTime;
 
-        }
+         }
+
+        
+        
     
     
     }
