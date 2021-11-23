@@ -2,9 +2,9 @@ import KeyboardState from "./ketboard.js";
 
 export function setUpKeyboard(entity,){
 
-    const SPACE = 32;   
+     
     const input = new KeyboardState();
-
+    const audio =  document.getElementById("player");
     ['Space','ArrowUp'].forEach(key=>{
         input.addMapping(key,keyState=>{
             if(keyState){
@@ -18,10 +18,19 @@ export function setUpKeyboard(entity,){
     
 
     input.addMapping('ArrowRight',keyState=>{
+       
+       if(audio.paused){
+        audio.play();
+       }
+      
         entity.go.dir = keyState
     })
 
     input.addMapping('ArrowLeft',keyState=>{
+         
+       if(audio.paused){
+        audio.play();
+       }
         entity.go.dir = -keyState
     })
 
