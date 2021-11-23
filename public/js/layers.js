@@ -69,7 +69,8 @@ export function createSpriteLayer(entities,width=64,height=64){
         entities.forEach(entity=>{
 
             spriteBufferContext.clearRect(0,0,width,height)
-
+            
+            camera.pos.x = entity.pos.x - 60
             entity.draw(spriteBufferContext);
 
             context.drawImage(spriteBuffer,

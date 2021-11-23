@@ -1,6 +1,6 @@
 import KeyboardState from "./ketboard.js";
 
-export function setUpKeyboard(entity){
+export function setUpKeyboard(entity,){
 
     const SPACE = 32;   
     const input = new KeyboardState();
@@ -15,7 +15,7 @@ export function setUpKeyboard(entity){
         })
     })
   
-
+    
 
     input.addMapping('ArrowRight',keyState=>{
         entity.go.dir = keyState
