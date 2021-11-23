@@ -21,9 +21,9 @@ Promise.all([createMario(), loadLevel("1-1")]).then(([mario, level]) => {
   const camera = new Camera(); 
   window.camera = camera;
   level.entities.add(mario);
-  level.comp.layers.push(createCollisionLayer(level),createCameraLayer(camera));
+  // level.comp.layers.push(createCollisionLayer(level),createCameraLayer(camera));
 
-  level.com
+  // level.com
 
   const input = setUpKeyboard(mario);
 

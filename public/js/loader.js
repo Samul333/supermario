@@ -68,7 +68,7 @@ export function createTiles(level,backgrounds){
 
 }
 
-function loadSpriteSheet(name){
+export function loadSpriteSheet(name){
 
     return loadJSON(`/sprites/${name}.json`)
     .then(sheetSpec=>Promise.all([
@@ -82,13 +82,25 @@ function loadSpriteSheet(name){
                 sheeetSpec.tileW,
                 sheeetSpec.tileH);
 
-            sheeetSpec.tiles.forEach(tileSpec=>{
+            
+                if(sheeetSpec.tiles){
+                    sheeetSpec.tiles.forEach(tileSpec=>{
 
-                sprites.defineTile(tileSpec.name,
-                    tileSpec.index[0],
-                    tileSpec.index[1])
+                        sprites.defineTile(tileSpec.name,
+                            tileSpec.index[0],
+                            tileSpec.index[1])
+        
+                    })
+                }
+                
+                if(sheeetSpec.frames){
 
-            })
+                    sheeetSpec.frames.forEach(frameSpec=>{
+                        sprites.define(frameSpec.name,...frameSpec.rect)
+                    })
+
+                }
+        
                 
             return sprites;
            
