@@ -1,20 +1,54 @@
 import { Matrix } from "./math.js";
 
 export function craeteBackgroundLayer (level,sprites){
+
+    const tiles = level.tiles;
+
+    const resolver = level.TileCollider.tiles
+
     const buffer = document.createElement('canvas');
-    buffer.width= 2048;
+    buffer.width= 256+16;
     buffer.height= 240;
 
-    const context = buffer.getContext('2d')
+    const context = buffer.getContext('2d');
 
-    level.tiles.forEach((tile,x,y)=>{
-        sprites.drawTile(tile.name,context,x,y);
-    })
+    let startIndex;
+    let endIndex;
+
+
+    function redraw(drawFrom,drawTo){
+
+
+        if(drawFrom === startIndex && drawTo === endIndex) return;
+
+        startIndex = drawFrom;
+        endIndex = drawTo;
+
+        for(let x = startIndex; x <= endIndex; x++){
+            const col = tiles.grid[x]
+
+            if(col){
+                col.forEach((tile,y)=>{
+                    sprites.drawTile(tile.name,context,x- startIndex,y)
+                })
+            }
+        }
+    }
 
 
 
     return function drawBackgroundLayer(context,camera){
-        context.drawImage(buffer,-camera.pos.x,-camera.pos.y)
+
+        const drawWidth = resolver.toIndex(camera.size.x);
+        const drawFrom = resolver.toIndex(camera.pos.x);
+
+        const drawTo = drawFrom + drawWidth;
+
+        redraw(drawFrom,drawTo)
+
+        context.drawImage(buffer,-
+            camera.pos.x % 16,-
+            camera.pos.y)
     }
 
 }
@@ -86,4 +120,19 @@ export function createCollisionLayer(level) {
 
         resolvedTiles.clear();
     };
+}
+
+export function createCameraLayer(cameraToDraw){
+
+    return function drawCameraRect(context,fromCamera){
+        context.storkeStyle = 'purple';
+        context.beginPath();
+        context.rect(
+            cameraToDraw.pos.x- fromCamera.pos.x, 
+            cameraToDraw.pos.y - fromCamera.pos.y, 
+            cameraToDraw.size.x, cameraToDraw.size.y);
+        context.stroke();
+
+    }
+
 }
