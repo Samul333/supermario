@@ -24,7 +24,7 @@ Promise.all([createMario(), loadLevel("1-1")]).then(([mario, level]) => {
 
   input.listenTo(window);
 
-  setupMouseControl(canvas,mario,camera)
+ // setupMouseControl(canvas,mario,camera)
 
   mario.pos.set(64, 180);
 
