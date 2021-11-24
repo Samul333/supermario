@@ -26,6 +26,9 @@ export class Jump extends Trait {
         if(side === 'bottom'){
             this.ready = true;
         }
+        else if (side === 'top' ){
+            this.cancel()
+        }
 
         
     }

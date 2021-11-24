@@ -51,6 +51,7 @@ export default class TileCollider {
             else if(entity.vel.y < 0){
                 if(entity.pos.y < match.y2){
                     entity.pos.y = match.y2;
+                    entity.obstruct('top');
                     entity.vel.y = 0;
                 }
             }
