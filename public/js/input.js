@@ -31,7 +31,7 @@ export function setUpKeyboard(entity,){
          audio.play();
         }
        
-         entity.go.dir = keyState
+         entity.go.dir += keyState ? 1:-1
      })
 
     input.addMapping('ArrowLeft',keyState=>{
@@ -39,7 +39,7 @@ export function setUpKeyboard(entity,){
        if(audio.paused && !pause){
         audio.play();
        }
-        entity.go.dir = -keyState
+        entity.go.dir += -keyState ? -1 : 1
     })
 
     return input

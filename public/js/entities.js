@@ -26,7 +26,12 @@ export function createMario(){
 
         function routeFrame(mario){
 
-            if (mario.go.dir !== 0){
+            if (mario.go.distance > 0){
+
+                if((mario.vel.x> 0 && mario.go.dir < 0 ) || (mario.vel.x <0 && mario.go.dir >0 )) {
+                    return 'break'
+                }
+
                 return runAnim(mario.go.distance);
             }
 
