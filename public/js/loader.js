@@ -1,6 +1,7 @@
 import Level from "./level.js";
 import { craeteBackgroundLayer, createSpriteLayer } from "./layers.js";
 import SpriteSheet from "./SpriteSheet.js";
+import { createAnim } from "./anim.js";
 
 export function loadImage(url){
 
@@ -97,6 +98,15 @@ export function loadSpriteSheet(name){
 
                     sheeetSpec.frames.forEach(frameSpec=>{
                         sprites.define(frameSpec.name,...frameSpec.rect)
+                    })
+
+                }
+
+                if(sheeetSpec.animations){
+                
+                    sheeetSpec.animations.forEach(animSpec=>{
+                        const animation = createAnim(animSpec.frames,animSpec.frameLen)
+                        sprites.defineAnim(animSpec.name,animation)
                     })
 
                 }

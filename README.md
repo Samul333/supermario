@@ -20,7 +20,8 @@ This is a recreation of the super mario game in vanilla javascript
 ## Currently working on:
 * Manual Side scrolling the overworld [DONE]
 * Mario Animations [DONE]
-* Tile Animations
+* Tile Animations [DONE]
+* Fine Grain Mechanics 
 
 
 # Run on local
