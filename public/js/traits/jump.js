@@ -7,16 +7,27 @@ export class Jump extends Trait {
         this.duration = 0.4;
         this.velocity = 200;
         this.engagedTime = 0;
+        this.ready = false;
     }
 
 
     start(){
+        if(!this.ready) return
         this.engagedTime = this.duration;
-        this.Jumping = true;
     }
 
     cancel(){
         this.engagedTime = 0;
+    }
+
+
+    obstruct(entity,side){
+
+        if(side === 'bottom'){
+            this.ready = true;
+        }
+
+        
     }
 
     update(entity,deltaTime){
@@ -27,7 +38,7 @@ export class Jump extends Trait {
 
          }
 
-        
+         this.ready = false;
         
     
     
