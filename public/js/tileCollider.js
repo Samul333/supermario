@@ -1,3 +1,4 @@
+import { Sides } from "./entity.js";
 import TileResolver from "./tileResolver.js";
 
 export default class TileCollider {
@@ -40,18 +41,19 @@ export default class TileCollider {
             if(match.tile.type !== 'ground') return;
 
             if(entity.vel.y >0){
+            
                 if(entity.pos.y + entity.size.y > match.y1){
                     entity.pos.y = match.y1 -entity.size.y;
                     
-                    entity.obstruct('bottom');
-
+                    entity.obstruct(Sides.BOTTOM);
+                    
                     entity.vel.y = 0;
                 }
             }
             else if(entity.vel.y < 0){
                 if(entity.pos.y < match.y2){
                     entity.pos.y = match.y2;
-                    entity.obstruct('top');
+                    entity.obstruct(Sides.TOP);
                     entity.vel.y = 0;
                 }
             }
@@ -74,13 +76,15 @@ export default class TileCollider {
             return;
         }
 
-        const matches = this.tiles.searchByRange(x,x,entity.pos.y,entity.pos.y+entity.size.y);
 
+        const matches = this.tiles.searchByRange(x,x,entity.pos.y,entity.pos.y+entity.size.y);
+        debugger;
         matches.forEach(match=>{
-            if(match.tile.name !== 'ground') return;
+            if(match.tile.type !== 'ground') return;
 
             if(entity.vel.x >0){
                 if(entity.pos.x + entity.size.x > match.x1){
+               
                     entity.pos.x = match.x1 -entity.size.x;
     
                     entity.vel.x = 0;
